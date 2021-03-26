@@ -1,0 +1,23 @@
+[package]
+name = "firecore-data-lib"
+version = "0.3.0-beta.1"
+authors = ["Rhys Holloway <rhyswilliamholloway@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+### Specifications
+
+firecore-util = { git = "https://github.com/DoNotDoughnut/firecore-util" }
+#firecore-util = { path = "../firecore-util" }
+
+firecore-pokedex-lib = { git = "https://github.com/DoNotDoughnut/firecore-pokedex-lib" }
+#firecore-pokedex-lib = { path = "../firecore-pokedex-lib" }
+
+### Serialization
+
+serde = { version = "1.0", features = ["derive"] }
+
+### Collections
+
+ahash = { version = "0.7", features = ["serde"] }
