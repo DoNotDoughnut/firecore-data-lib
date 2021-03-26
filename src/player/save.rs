@@ -2,7 +2,6 @@
 use firecore_pokedex_lib::pokemon::party::PokemonParty;
 use serde::{Deserialize, Serialize};
 use firecore_util::{GlobalPosition, Location, Position, Coordinate};
-use firecore_pokedex_lib::pokemon::instance::PokemonInstance;
 
 use super::world::WorldStatus;
 
@@ -33,10 +32,6 @@ impl PlayerSave {
 			name: name.to_owned(),
 			..Default::default()
 		}
-	}
-
-	pub fn add_pokemon_to_party(&mut self, pokemon: PokemonInstance) {
-		self.party.pokemon.push(pokemon);
 	}
 
 	pub fn has_battled(&self, map: &String, npc: &u8) -> bool {
