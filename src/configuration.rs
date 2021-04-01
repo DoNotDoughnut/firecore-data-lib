@@ -6,7 +6,10 @@ use firecore_input::{Control, KeySetSerializable};
 #[derive(Serialize, Deserialize)]
 pub struct Configuration {
 
+	#[serde(default)]
 	pub controls: HashMap<Control, KeySetSerializable>,	
-	// pub touchscreen: bool,
+
+	#[serde(default)]
+	pub touchscreen: bool,
 
 }
