@@ -1,5 +1,6 @@
 
 use firecore_pokedex_lib::pokemon::party::PokemonParty;
+use firecore_util::TinyStr16;
 use serde::{Deserialize, Serialize};
 use firecore_util::{GlobalPosition, Location, Position, Coordinate};
 
@@ -11,7 +12,7 @@ pub struct PlayerSave {
 
 	pub name: String,
 
-	#[serde(default = "player_location")]
+	#[serde(default = "default_location")]
 	pub location: Location,
 
 	#[serde(default)]
@@ -45,7 +46,7 @@ impl Default for PlayerSave {
 		Self {
 			name: default_name(),
 			party: PokemonParty::default(),
-			location: player_location(),
+			location: default_location(),
 		    worth: 0,
 		    world_status: WorldStatus::default(),
 		}
@@ -57,10 +58,10 @@ pub fn default_name() -> String {
 	"Red".to_owned()
 }
 
-fn player_location() -> Location {
+pub fn default_location() -> Location {
 	Location {
-		map_id: "pallet_houses".to_owned(),
-		map_index: 1,
+		map: Some(default_map()),
+		index: default_index(),
 		position: GlobalPosition {
 			local: Position {
 				coords: Coordinate {
@@ -72,4 +73,12 @@ fn player_location() -> Location {
 			..Default::default()
 		}		
 	}
+}
+
+pub fn default_map() -> TinyStr16 {
+	"pallet_houses".parse().expect("Could not get map")
+}
+
+pub fn default_index() -> TinyStr16 {
+	"player_room".parse().expect("Could not get map index")
 }
