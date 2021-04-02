@@ -26,6 +26,15 @@ impl PlayerSaves {
         self.select(index);
     }
 
+    pub fn delete(&mut self, index: usize) -> bool {
+        if index <= self.saves.len() {
+            self.saves.remove(index);
+            true
+        } else {
+            false
+        }
+    }
+
     pub fn get(&self) -> &PlayerSave {
         &self.saves[self.selected.unwrap()]
     }
