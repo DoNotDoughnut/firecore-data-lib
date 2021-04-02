@@ -1,6 +1,6 @@
 [package]
-name = "firecore-data-lib"
-version = "0.3.0-beta.2"
+name = "firecore-saves"
+version = "0.3.0"
 authors = ["Rhys Holloway <rhyswilliamholloway@gmail.com>"]
 edition = "2018"
 
@@ -13,9 +13,6 @@ firecore-util = { git = "https://github.com/DoNotDoughnut/firecore-util" }
 
 firecore-pokedex-lib = { git = "https://github.com/DoNotDoughnut/firecore-pokedex-lib" }
 #firecore-pokedex-lib = { path = "../firecore-pokedex-lib" }
-
-firecore-input = { git = "https://github.com/DoNotDoughnut/firecore-input", default-features = false }
-#firecore-input = { path = "../firecore-input", default-features = false }
 
 ### Serialization
 

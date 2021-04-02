@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-
-use super::save::PlayerSave;
+use crate::PersistantData;
+use super::PlayerSave;
 
 #[derive(Default, Deserialize, Serialize)]
 pub struct PlayerSaves {
@@ -51,4 +51,10 @@ impl PlayerSaves {
         self.saves.iter().map(|data| &data.name).collect()
     }
 
+}
+
+impl PersistantData for PlayerSaves {
+    fn path() -> &'static str {
+        "saves.ron"
+    }
 }
