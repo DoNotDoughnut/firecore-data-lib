@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use crate::PersistantData;
 use super::PlayerSave;
 
-#[derive(Default, Deserialize, Serialize)]
+#[derive(Default, Debug, Deserialize, Serialize)]
 pub struct PlayerSaves {
 
     #[serde(skip)]
@@ -36,16 +36,12 @@ impl PlayerSaves {
     }
 
     pub fn get(&self) -> &PlayerSave {
-        &self.saves[self.selected.unwrap()]
+        &self.saves[self.selected.expect("Could not get selected player save!")]
     }
 
     pub fn get_mut(&mut self) -> &mut PlayerSave {
-        &mut self.saves[self.selected.unwrap()]
+        &mut self.saves[self.selected.expect("Could not get selected player save!")]
     }
-
-    // pub fn load_or_create_new(&self) {
-    //     self
-    // }
 
     pub fn name_list(&self) -> Vec<&String> {
         self.saves.iter().map(|data| &data.name).collect()
@@ -54,7 +50,7 @@ impl PlayerSaves {
 }
 
 impl PersistantData for PlayerSaves {
-    fn path() -> &'static str {
-        "saves.ron"
+    fn file_name() -> &'static str {
+        "saves"
     }
 }

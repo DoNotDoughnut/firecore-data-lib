@@ -5,6 +5,6 @@ pub mod player;
 
 pub trait PersistantData: Serialize + DeserializeOwned + Default {
 
-    fn path() -> &'static str;
+    fn file_name() -> &'static str;
 
 }
